@@ -1,69 +1,60 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
+
+import Checkbox from "@/components/Checkbox";
+import Radio from "@/components/Radio";
+import Select from "@/components/Select";
+import { useState } from "react";
 
 export default function Home() {
+  const [linguagem, setLinguagem] = useState<string[]>([]);
+  const [termos, setTermos] = useState<string[]>([]);
+  const [opcoes, setOpcoes] = useState("");
+  const [radio, setRadio] = useState("");
+
+  if (termos.length > 0) {
+    console.log("Termos Enviados");
+  }
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <main>
+      <article className="inputs">
+        <h2>Checkbxo</h2>
+        <Checkbox
+          options={["JavaScript", "Rust", "Ruby"]}
+          value={linguagem}
+          setValue={setLinguagem}
+          required
         />
-        <div className={styles.intro}>
-          <h1>
-            To get started, edit the{" "}
-            <code className={styles.code}>page.tsx</code> file.
-          </h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </article>
+
+      <article className="inputs">
+        <h2>Termos check</h2>
+        <Checkbox
+          options={["JavaScript", "Rust", "Ruby"]}
+          value={termos}
+          setValue={setTermos}
+          required
+        />
+      </article>
+
+      <article className="inputs">
+        <h2>Select</h2>
+        <Select
+          options={["Hoje", "Amanhã", "Depois"]}
+          value={opcoes}
+          setValue={setOpcoes}
+        />
+      </article>
+
+      <article className="inputs">
+        <h2>Radio</h2>
+        <Radio
+          options={["Beijo", "Amor", "Carinho"]}
+          value={radio}
+          setValue={setRadio}
+          required
+        />
+      </article>
+    </main>
   );
 }
