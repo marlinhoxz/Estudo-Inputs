@@ -1,36 +1,162 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📚 Estudo de Inputs — React + TypeScript
 
-## Getting Started
+Projeto desenvolvido para estudar e praticar o **controle de formulários e inputs no React**, utilizando **TypeScript** e **Next.js**.
 
-First, run the development server:
+O foco principal deste estudo foi entender como trabalhar com **componentes controlados**, gerenciamento de estado e tipagem dos diferentes elementos de formulário.
+
+## 🎯 Objetivo
+
+Praticar a criação de componentes reutilizáveis para diferentes tipos de inputs, entendendo como o estado do React se relaciona com os valores exibidos nos elementos HTML.
+
+Durante o desenvolvimento, foram estudados conceitos como:
+
+- Estados reativos com `useState`
+- Componentes controlados
+- `value` e `checked`
+- Eventos `onChange`
+- Tipagem de eventos com TypeScript
+- Tipagem de `props`
+- `React.Dispatch` e `React.SetStateAction`
+- `HTMLInputElement`
+- `HTMLSelectElement`
+- `HTMLTextAreaElement`
+- Composição de tipos com `extends`
+- Componentes reutilizáveis
+- Inputs `text`, `email`, `password`
+- `select`
+- `radio`
+- `checkbox`
+
+## 🧩 Componentes estudados
+
+### Input
+
+Inputs controlados pelo estado do React:
+
+```tsx
+<input
+  value={value}
+  onChange={handleChange}
+/>
+```
+
+### Select
+
+Componente que recebe uma lista de opções e mantém o valor selecionado sincronizado com o estado:
+
+```tsx
+<Select
+  options={["React", "Next.js", "TypeScript"]}
+  value={value}
+  setValue={setValue}
+/>
+```
+
+### Radio
+
+Estudo de seleção de uma única opção utilizando `checked` e `value`.
+
+### Checkbox
+
+Estudo de seleção de múltiplas opções utilizando um array:
+
+```ts
+const [value, setValue] = useState<string[]>([]);
+```
+
+Exemplo de estado:
+
+```ts
+["React", "Next.js", "TypeScript"]
+```
+
+## 🧠 Conceitos de TypeScript
+
+Um dos objetivos do projeto foi entender como tipar corretamente os componentes de formulário.
+
+Exemplo:
+
+```tsx
+interface SelectProps
+  extends React.SelectHTMLAttributes<HTMLSelectElement> {
+  options: string[];
+  value: string;
+  setValue: React.Dispatch<React.SetStateAction<string>>;
+}
+```
+
+Para inputs:
+
+```tsx
+interface InputProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
+  value: string;
+  setValue: React.Dispatch<React.SetStateAction<string>>;
+}
+```
+
+Dessa forma, os componentes podem receber tanto suas próprias propriedades quanto as propriedades nativas dos elementos HTML.
+
+## 🛠️ Tecnologias
+
+- **Next.js**
+- **React**
+- **TypeScript**
+
+## 📁 Estrutura
+
+```text
+src/
+├── app/
+│   └── page.tsx
+│
+└── components/
+    ├── Checkbox.tsx
+    ├── Select.tsx
+    └── ...
+```
+
+## 🚀 Como executar
+
+Clone o repositório:
+
+```bash
+git clone https://github.com/marlinhoxz/Estudo-Inputs.git
+```
+
+Entre na pasta:
+
+```bash
+cd Estudo-Inputs
+```
+
+Instale as dependências:
+
+```bash
+npm install
+```
+
+Execute o projeto:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Acesse:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📖 O que este projeto representa
 
-## Learn More
+Este projeto faz parte dos meus estudos de **React e TypeScript**, com foco em compreender os fundamentos antes de avançar para abstrações mais complexas.
 
-To learn more about Next.js, take a look at the following resources:
+A ideia não é apenas criar os componentes, mas entender como o React controla os valores dos inputs através do estado e como o TypeScript pode garantir a segurança desses dados.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 👨‍💻 Autor
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Marlon**
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+GitHub:  
+https://github.com/marlinhoxz
